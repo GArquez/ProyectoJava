@@ -1,9 +1,12 @@
 /*Simulador para asociarse, ingresa nombres, ubicacion y duracion, para devolver lo mismo con el numero de asociamiento correspondiente y el precio a pagar*/
-const ubicaciones = ['Platea', "Laprida", "Bolivia", "Chile"]
 
 let Socio = prompt("Ingresar nombre y apellido completo para asociarse")
+alert("!Hola! " + Socio)
 
-function SocioPrecio (duracion, sector){
+const duracion = parseInt(prompt ("Ahora elegí la duracion en meses: 6 o 12"))
+const sector = prompt ("Ahora elegi la ubicacion: Platea, Laprida, Bolivia o Chile")
+
+const socioPrecio = (duracion, sector) => {
     let mes = 100
     let locacion = 0
     if (sector == "Platea"){
@@ -19,24 +22,40 @@ function SocioPrecio (duracion, sector){
     return precio
 }
 
+const packSocio = [
+      { Ubicacion: "Platea",
+      Precio: socioPrecio(duracion,sector),
+      Tiempo: duracion + " meses" }, 
+      { Ubicacion: "Laprida",
+      Precio: socioPrecio(duracion,sector),
+      Tiempo: duracion + " meses" }, 
+      { Ubicacion: "Bolivia",
+      Precio: socioPrecio(duracion,sector),
+      Tiempo: duracion + " meses"},
+      { Ubicacion: "Chile",
+      Precio: socioPrecio(duracion,sector),
+      Tiempo: duracion + " meses"} ]
+
+
 if (Socio != "ESC") {
-    console.log("!Hola! " + Socio)
-    const duracion = parseInt(prompt ("Ahora elegí la duracion en meses: 6 o 12"))
-    const sector = prompt ("Ahora elegi la ubicacion: Platea, Laprida, Bolivia o Chile")
 
-    let ubicacion = ubicaciones.includes(sector)
+    /*let ubicacion = packSocio.includes(sector)*/
+    const resultado = packSocio.find((el) => el.Ubicacion.includes(sector))
 
-    while (duracion == 6 && ubicacion) {
+    while (duracion == 6 && resultado) {
         for (let i = 1; i <= 20; i++){
-            let yaSocio = "!Hola! " + Socio + " Sos el socio N° " + i + " en el sector " + sector +" por una duracion de " + duracion + " meses, por $" + SocioPrecio (duracion, sector)
+            let yaSocio = "!Hola! " + Socio + " Sos el socio N° " + i + " y este es tu pack de socio "
             console.log(yaSocio)
+            console.log(resultado)
         }
         break
     }
-    while (duracion == 12 && ubicacion) {
+    while (duracion == 12 && resultado) {
         for (let i = 1; i <= 20; i++){
-            let yaSocio = "!Hola! " + Socio + " Sos el socio N° " + i + " en el sector " + sector +" por una duracion de " + duracion + " meses, por $" + SocioPrecio (duracion, sector)
+            let yaSocio = "!Hola! " + Socio + " Sos el socio N° " + i + " y este es tu pack de socio "
+            resultado
             console.log(yaSocio)
+            console.log(resultado)
         }
         break
     }     
