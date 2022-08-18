@@ -1,27 +1,21 @@
 /*Simulador para asociarse, ingresa nombres, ubicacion y duracion, para devolver lo mismo con el numero de asociamiento correspondiente y el precio a pagar*/
+
 let principal = document.getElementById("Main")
-principal.className = "container d-flex flex-column align-items-center justify-content-center"
-const contenido = `<form id="formulario" action method="get" enctype="text/plain">
-                   <div class="d-flex flex-column align-items-center justify-content-center"> 
-                   <h1>Asociate al Club Atlético Tucumán</h1>
-                   </div>
-                   <p>Esta es una app para asociarte. Ingresa nombres, ubicacion y duracion, para devolverte tu pack de socio</p>
-                   <div class="row">
-                   <div class="col-md-4 d-flex flex-column align-items-center"><label>Nombre y Apellido</label><input id="Socio"></input></div>
-                   <div class="col-md-4 d-flex flex-column align-items-center"><label>Duracion</label><input id="Duracion" placeholder="Coloque en numero 6 o 12 meses"></input></div>
-                   <div class="col-md-4 d-flex flex-column align-items-center"><label>Sector</label><input id="Sector" placeholder="Coloque Platea, Laprida, Chile o Bolivia"></input></div>
-                   </div>
-                   <div class="d-flex flex-column align-items-center"><button type="submit" class="btn btn-primary">Enviar</button></div>
-                   </form>`
-principal.innerHTML = contenido
+principal.className = "container d-flex flex-column align-items-center"
 
+let caja0 = document.getElementById("Socio")
+let caja1 = document.getElementById("Duracion")
+let caja2 = document.getElementById("Sector")
+let caja3 = document.getElementById("Enviar")
+caja0.className ="col-md-3 d-flex flex-column align-items-center"
+caja1.className ="col-md-3 d-flex flex-column align-items-center"
+caja2.className ="col-md-3 d-flex flex-column align-items-center"
+caja3.className ="col-md-3 d-flex flex-column align-items-center"
 
-let Socio = 0
-const duracion = 0
-const sector = 0
-
-let miFormulario = document.getElementById("formulario");
-miFormulario.addEventListener("submit", validarFormulario);
+const titular = document.getElementById("titular")
+const parrafo = document.getElementById("parrafo")
+titular.innerHTML = "Asociate al Club Atlético Tucumán"
+parrafo.innerHTML = "Mediante esta app vas a poder asociarte. Ingresa tu nombre completo, elegí entre 6 y 12 meses junto a la ubicacion deseada ¡y tenes tu pack de socio!"
 
 
 const socioPrecio = (duracion, sector) => {
@@ -40,55 +34,55 @@ const socioPrecio = (duracion, sector) => {
     return precio
 }
 
-const packSocio = [
-      { Ubicacion: "Platea",
-      Precio: socioPrecio(duracion,sector),
-      Tiempo: duracion + " meses" }, 
-      { Ubicacion: "Laprida",
-      Precio: socioPrecio(duracion,sector),
-      Tiempo: duracion + " meses" }, 
-      { Ubicacion: "Bolivia",
-      Precio: socioPrecio(duracion,sector),
-      Tiempo: duracion + " meses"},
-      { Ubicacion: "Chile",
-      Precio: socioPrecio(duracion,sector),
-      Tiempo: duracion + " meses"} ]
+let miFormulario = document.getElementById("formulario");
+miFormulario.addEventListener("submit", validarFormulario);
 
+function validarFormulario(e){
+    e.preventDefault();
+    let formulario = e.target
+    let socio = (formulario.children[0].value)
+    let duracion = (formulario.children[1].value)
+    let sector = (formulario.children[2].value)
 
-let div = document.createElement("div")
-div.className = "d-flex flex-column align-items-center"
-let caja = `<h2>Este es tu pack de socio</h2>
-            <p>Ubicacion: ${packSocio.Ubicacion}</p>
-            <p>Precio: ${packSocio.Precio}</p>
-            <p>Tiempo: ${packSocio.Tiempo}</p>`
-div.innerHTML = caja 
+    socioPrecio(duracion, sector)
 
+    const packSocio = [
+        { Ubicacion: "Platea",
+        Precio:"$" + socioPrecio(duracion,sector),
+        Tiempo: duracion + " meses" }, 
+        { Ubicacion: "Laprida",
+        Precio:"$" + socioPrecio(duracion,sector),
+        Tiempo: duracion + " meses" }, 
+        { Ubicacion: "Bolivia",
+        Precio:"$" + socioPrecio(duracion,sector),
+        Tiempo: duracion + " meses"},
+        { Ubicacion: "Chile",
+        Precio:"$" + socioPrecio(duracion,sector),
+        Tiempo: duracion + " meses"} ]
 
-if (Socio != "ESC") {
-
-    /*let ubicacion = packSocio.includes(sector)*/
-    const resultado = packSocio.find((el) => el.Ubicacion.includes(sector))
-
-    while (duracion == 6 && resultado) {
-        function validarFormulario(e){
-            e.preventDefault();
-            let formulario = e.target
-            Socio=(formulario.children[0].value);  
-            duracion=parseInt((formulario.children[1].value));
-            sector=(formulario.children[2].value); 
-            document.main.apnned(div)
-        }
+        
+        if (socio != "") {
+            const buscador = packSocio.find((el) => el.Ubicacion == sector)
+            
+            while (duracion == 6 && buscador) {
+            let div = document.getElementById("Constructor")
+            div.className = "d-flex flex-column align-items-center"
+            let caja = `<h2>¡Hola! Este es tu pack de socio</h2>
+                        <p>Ubicacion: ${buscador.Ubicacion}</p>
+                        <p>Precio: ${buscador.Precio}</p>
+                        <p>Tiempo: ${buscador.Tiempo}</p>`
+            return div.innerHTML = caja
+            }    
+            while (duracion == 12 && buscador) {
+            let div = document.getElementById("Constructor")
+            div.className = "d-flex flex-column align-items-center"
+            let caja = `<h2>Este es tu pack de socio</h2>
+                        <p>Ubicacion: ${buscador.Ubicacion}</p>
+                        <p>Precio: ${buscador.Precio}</p>
+                        <p>Tiempo: ${buscador.Tiempo}</p>`
+            return div.innerHTML = caja
+            }
+        } else {
+        alert ("Por favor, Ingresar nombre y apellido completo para asociarse")
     }
-    while (duracion == 12 && resultado) {
-        function validarFormulario(e){
-            e.preventDefault();
-            let formulario = e.target
-            Socio=(formulario.children[0].value);  
-            duracion=parseInt((formulario.children[1].value));
-            sector=(formulario.children[2].value); 
-            document.main.apnned(div)
-        }
-    }     
-} else {
-    alert ("Por favor, Ingresar nombre y apellido completo para asociarse")
 }
