@@ -1,0 +1,56 @@
+@import "./responsive";
+.contenedor{
+    display:grid;
+    grid-template-areas: 
+                        "nav nav nav"
+                        "noticias noticias atajo"
+                        "divisor divisor divisor"
+                        "otra otra otra"
+                        "resumen resumen resumen"
+                        "footer footer footer"; 
+    @include movil {
+        grid-template-areas: "nav"
+                             "atajo"
+                             "noticias"
+                             "divisor"
+                             "otra"
+                             "resumen"
+                             "footer";
+    }
+}
+.contenedorFix{
+    display: grid;
+    grid-template-areas:
+                        "nav"
+                        "contenido"
+                        "resumen"
+                        "footer";
+    @include movil{
+            grid-template-areas: "nav"
+                                 "contenido"
+                                 "resumen"
+                                 "footer";
+        }                     
+}
+.contenedorPlantel{
+    display: grid;
+    grid-template-areas: 
+                        "nav"
+                        "contenido"
+                        "resumen"
+                        "footer";
+}
+.contenedorEstadio{
+    display: grid;
+    grid-template-areas: "nav"
+                         "contenido"
+                         "resumen"
+                         "footer";
+}
+.contenedorAsoc{
+    display: grid;
+    grid-template-areas: "nav"
+                         "contenido"
+                         "resumen"
+                         "footer";
+}

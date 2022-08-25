@@ -1,0 +1,318 @@
+*{
+    margin:0 ;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(../Assets/Hinchada.jpg);
+}
+/*seccion Inicio*/
+.contenedor{
+    display:grid;
+    grid-template-areas: 
+                        "nav nav nav"
+                        "noticias noticias atajo"
+                        "resumen resumen resumen"
+                        "footer footer footer"; 
+}
+header{
+    grid-area: nav;
+    margin-bottom: 5%;
+}
+.Txtlogo{
+    font-family: 'Volkhov', serif;
+    color: rgba(69, 171, 230, 0.829);
+}
+.atajo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+    padding: 50px 20px;
+    margin-right: 5%;
+    border-radius: 1%;
+    grid-area: atajo;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1em;
+}
+.atajo__titulo{
+    margin: 20px 0;
+}
+.atajo__img{
+    border-radius: 5%;
+    overflow: hidden;
+}
+.atajo__img img{
+    border-radius: 5%;
+    transition: transform 3s;
+}
+.atajo__img img:hover{
+    transform: scale(1.2);
+}
+.principal{
+    background-color: whitesmoke;
+    margin-left: 2.5%;
+    padding: 30px 30px;
+    border-radius: 1%;
+    grid-area: noticias;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1em;
+}
+.noticiaUno{
+    display: flex;
+}
+
+.noticiaUno img{
+    border-radius: 5%;
+}
+.noticiaUno__texto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 10px;
+}
+.noticiaDos{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.noticiaDos img{
+    border-radius: 5%;
+}
+.noticiaDos__texto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+}
+.reseña{
+    font-family:'Times New Roman', Times, serif;
+    grid-area: resumen;
+    margin-top: 5%;
+}
+/*seccion de fixture*/
+.contenedorFix{
+    display: grid;
+    grid-template-areas:
+                        "nav"
+                        "contenido"
+                        "resumen"
+                        "footer";
+}
+.principalFix{
+    background-color: whitesmoke;
+    margin: 20px 1%;
+    padding: 30px 30px;
+    border-radius: 3%;
+    grid-area: contenido;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.partido{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.partido img{
+    border-radius: 3%;
+}
+.partidoAnterior{
+    display: flex;
+}
+.partidoAnterior div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 10px;
+    justify-content: center;
+}
+.reseña{
+    font-family:'Times New Roman', Times, serif;
+    grid-area: resumen;
+    margin-top: 5%;
+}
+/*seccion de plantel*/
+.contenedorPlantel{
+    display: grid;
+    grid-template-areas: 
+                        "nav"
+                        "contenido"
+                        "resumen"
+                        "footer";
+}
+.principalPlantel{
+    background-color: whitesmoke;
+    margin: 20px 1%;
+    padding: 30px 30px;
+    border-radius: 3%;
+    grid-area: contenido;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.plantel{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items:center;
+    height: 50vh;
+}
+.carousel-caption{
+    background-color: aliceblue;
+    border-left: 5px solid rgb(143, 122, 4);
+    border-bottom: 5px solid rgb(143, 122, 4);
+}
+table{
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: solid whitesmoke;
+}
+.reseña{
+    font-family:'Times New Roman', Times, serif;
+    grid-area: resumen;
+    margin-top: 5%;
+}
+/*seccion del estadio*/
+.contenedorEstadio{
+    display: grid;
+    grid-template-areas: "nav"
+                         "contenido"
+                         "resumen"
+                         "footer";
+}
+.principalEst{
+    background-color: cadetblue;
+    margin: 20px 1%;
+    padding: 30px 30px;
+    border-radius: 3%;
+    grid-area: contenido;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.descripcion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.descripcion img{
+    border-radius: 3%;
+}
+.reseña{
+    font-family:'Times New Roman', Times, serif;
+    grid-area: resumen;
+    margin-top: 5%;
+}
+/*seccion de asociamiento*/
+.contenedorAsoc{
+    display: grid;
+    grid-template-areas: "nav"
+                         "contenido"
+                         "resumen"
+                         "footer";
+}
+.principalAsoc{
+    background-color: cadetblue;
+    margin: 20px 1%;
+    padding: 30px 30px;
+    border-radius: 3%;
+    grid-area: contenido;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.asoc{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+}
+.formulario{
+    position: relative;
+    top:10%;
+}
+.reseña{
+    font-family:'Times New Roman', Times, serif;
+    grid-area: resumen;
+    margin-top: 5%;
+}
+footer{
+    background: rgb(57,74,255);
+    background: -moz-linear-gradient(0deg, rgba(57,74,255,0.9752275910364145) 3%, rgba(24,183,224,1) 33%, rgba(255,255,255,1) 91%);
+    background: -webkit-linear-gradient(0deg, rgba(57,74,255,0.9752275910364145) 3%, rgba(24,183,224,1) 33%, rgba(255,255,255,1) 91%);
+    background: linear-gradient(0deg, rgba(57,74,255,0.9752275910364145) 3%, rgba(24,183,224,1) 33%, rgba(255,255,255,1) 91%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#394aff",endColorstr="#ffffff",GradientType=1);
+    background-color: whitesmoke ;
+    color: rgba(0, 0, 0, 0.808);
+    display: flex;
+    justify-content: space-evenly;
+    grid-area: footer;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1em;
+}
+.imgf{
+    display: flex;
+    align-items: center;
+    margin: 2% 0;
+}
+.redes{ 
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    justify-content: center;
+}
+.redes ul{
+    list-style: none;
+}
+.contacto{
+    display: flex;
+    align-items: center;
+}
+@media only screen and (max-width: 500px){
+    .contenedor{
+        grid-template-areas: "nav"
+                             "atajo"
+                             "noticias"
+                             "resumen"
+                             "footer";
+    }
+    .atajo{
+        margin: 0 5%;
+        height: 50vh;
+    }
+    .principal{
+        margin: 0 5%;
+    }
+    .noticiaUno{
+        flex-direction: column;
+        align-items: center;
+    }
+    .noticiaDos{
+        flex-direction: column;
+        align-items: center;
+    }
+    footer{
+        flex-direction: column;
+        align-items:center;
+    }
+    /*seccion Fixture*/
+    .contenedorFix{
+        grid-template-areas: "nav"
+                             "contenido"
+                             "resumen"
+                             "footer";
+    }
+    .partidoAnterior{
+        flex-direction: column;
+    }
+    /*seccion Plantel*/
+    table{
+        font-size: 0.8em;
+    }
+    /*seccion Estadio*/
+    .descripcion img{
+        width: 400px;
+    }
+    /*seccion Asociamiento*/
+    .principalAsoc{
+        height: 100%;
+    }
+}

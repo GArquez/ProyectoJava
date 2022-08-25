@@ -1,27 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--Favicon-->
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="./assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="./assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Atlético Tucumán</title>
+    <meta name="description" content="La página del Gigante del Norte. Fundado en 1902. Marcando el rumbo del futbol en el norte argentino.">
+    <meta name="keywords" content="Atletico Tucuman, Redes de Atletico, noticias de Atletico">
+    <!--Font de google-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Volkhov&display=swap');
+    </style> 
+    <!--AOS-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!--Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <title>Document</title>
+    <!--Fontawesome-->
+    <script src="https://kit.fontawesome.com/3a0acd883b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./Styles/estilos.css">
 </head>
 <body>
-    <main id="Main">
-        <h1 id="titular"></h1>
-        <p id="parrafo"></p>
-        <form id="formulario" class="row">          
-            <input id="Socio" placeholder="Nombre y Appelido"></input></div>
-            <input id="Duracion" placeholder="Duracion en meses: 6 o 12"></input>
-            <input id="Sector" placeholder="Sector: Platea, Laprida, Chile o Bolivia"></input>
-            <input id="Enviar" type="submit" class="btn btn-primary"></input>
-        </form>
-        <div id="Constructor">            
+    <div class="contenedor">
+    <!--Inicio de la navbar-->   
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container">
+          <!--Logo-->
+          <a class="navbar-brand" href="./index.html"><img src="./Assets/favicon.png" width="50px" alt="Escudo ATU"></a>
+          <div class="Txtlogo">
+            <h1>Club <br>Atlético <br>Tucumán</h1>
+          </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav align-items-center">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./Secciones/Partidos.html">Fixture</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./Secciones/Plantel.html"">Plantel</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./Secciones/Estadio.html">Estadio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./Secciones/Asociamiento.html">¡Asociate!</a>
+              </li>
+            </ul>
+          </div>
         </div>
+      </nav>
+    </header>
+    <!--Fin de la navbar-->
+    <!--Inicio de noticias sobre el club-->
+    <main class="principal">
+      <div class="row">
+        <section class="noticias col-md-8">
+                <article>
+                        <div class="noticiaUno">
+                                   <img src="./Assets/ATUvsCAT.jpg" alt="Menendez festejando"
+                                   class="noticiaUno__img">
+                               <div class="noticiaUno__texto">
+                                   <h2>Atlético ganó en su ultimo partido como local</h2>
+                                   <br>
+                                   <p>En lo que fue su ultima presentacion como local por el torneo argentino, el Decano pudo recolectar tres puntos y dejarlos en casa tras haberle ganado al conjunto Talleres de Cordoba.</p>
+                               </div>
+                           </div>
+                           <br>
+                           <div class="noticiaDos">
+                               <img src="./Assets/Elecciones.jpeg" alt="Asamblea del club" class="noticiaDos__img">
+                               <div class="noticiaDos__texto">
+                                   <h2>¿Habrá listas en las elecciones venideras?</h2>
+                                   <br>
+                                   <p>Se acercán las elecciones en nuestro club, y se ha estado con este tema como eje principal en los ultimos meses de la vida institucional. Ya que diferentes personajes han estado protagonizando este clima electoral, desde el mismo presidente, como los que formarian las listas que aspiran a comandar nuestro club. Este ultimo tema es no menor ya que no estan definidas las listas que se van a presentar...</p>
+                               </div>
+                            </div>
+                    </article>
+        </section>
+                <!--Fin de noticias--> 
+                <!--Info express, con atajo de imagen hacia la seccion de los partidos -->
+        <section class="atajo col-md-4">
+          <div class="atajo__marcador d-flex flex-column">
+            <p class="align-self-center">Fecha 17 - LPF</p>
+            <div class="atajo__logos d-flex justify-content-around align-items-baseline">
+              <div class="atajo__atu d-flex flex-column align-items-center">
+                <img src="./Assets/favicon.png" alt="" width="50px">
+                <p>3</p>
+              </div>
+              <div class="atajo__rival d-flex flex-column align-items-center">
+                <img src="./Assets/EscudoTalleres.png" alt="" width="50px">
+                <p>0</p>
+              </div>
+            </div>
+          </div>
+          <div class="atajo__proximo d-flex flex-column align-items-center">
+            <h2 class="atajo__titulo">Proximo partido...</h2>
+            <div class="atajo__img">
+                <a href="./secciones/Partidos.html">
+                <img src="./assets/match.jpg" alt="Matchday" width="100%">
+                </a>   
+            </div>
+                <p class="atajo__texto">El próximo partido se jugará en condicion de visitante contra el C.A Banfield</p>                  
+          </div>
+        </section>
+      </div>
     </main>
-    <script src="app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-</body>
+    <div class="divisor col-md-12"></div>
+    <div class="row otraseccion">
+      <div class="otraseccion__asociate col-md-2 d-flex flex-column justify-content-center align-items-center">
+      <a href="./Secciones/Asociamiento.html">
+        <strong class="d-flex flex-column justify-content-center align-items-center"><p>¡Asociate</p><p>al</p><p>Deca!</p></strong> 
+      </a>
+      </div>
+      <section class="noticias col-md-10">
+              <article>
+                      <div class="noticiaUno">
+                                 <img src="./Assets/BalantaAtlético.jpg" alt="Presentacion de Balanta"
+                                 class="noticiaUno__img">
+                             <div class="noticiaUno__texto">
+                                 <h2>Balanta ya es "Decano"</h2>
+                                 <br>
+                                 <p>El 5 Colombiano ya llegó procedente del Deportivo Cali de Colombia y esta bajo las ordenés de Lucas Pusineri.</p>
+                             </div>
+                         </div>
+                         <br>
+                         <div class="noticiaDos">
+                             <img src="./Assets/Remodelacion.jpg" alt="Monumental José Fierro" class="noticiaDos__img">
+                             <div class="noticiaDos__texto">
+                                 <h2>Obras en el Monumental</h2>
+                                 <br>
+                                 <p>De cara a las obras que planea la "HCD" del Club Atlético Tucumán, se destaca como avanza la remodelacion en el estadio. Entra y mirá...</p>
+                             </div>
+                          </div>
+                  </article>
+        </section>
+      </div>
+                <!--Fin de info-->
+                <!--Breve introduccion a la historia del club-->
+        <section class="text-bg-light p-3 reseña" data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-back"
+        data-aos-delay="100"
+        data-aos-offset="0">
+                <h3>El C.A.Tucumán...</h3>
+                             <br>
+                             <h5>Se fundó en el año 1902, el 27 de Septiembre, en una locacion ubicada en el centro tucumano quedo registrada la fundacion de nuestro club por nuestros padres fundadores Agenor Albornoz y Jose Fierro...</h5>      
+        </section>
+                <!--Fin de la introduccion-->       
+       <footer>
+               <img class="imgf" width="40px" src="./Assets/favicon.png" alt="Escudo ATU">
+               <div class="redes">
+                   <ul>
+                   <li><i class="fa-brands fa-instagram fa-xl"></i>@atleticotucuman</li>
+                   <li><i class="fa-brands fa-twitter fa-xl"></i>@ATOficial</li>
+                   <li><i class="fa-brands fa-facebook fa-xl"></i>Atlético Tucumán</li>
+                   </ul>
+               </div>   
+            <p class="contacto">Contacto: +54 9 381234567</p>            
+            </footer>
+        </div>         
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+        </body>
 </html>

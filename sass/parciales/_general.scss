@@ -1,0 +1,284 @@
+$estilos:(
+    fuentetitulo:'Volkhov',/* serif,*/
+    fuenteprincipal:'Segoe UI',/* Tahoma, Geneva, Verdana, sans-serif,*/
+    fuentereseña:'Times New Roman',/* Times, serif,*/
+    fuentefooter:'Franklin Gothic Medium',/* 'Arial Narrow', Arial, sans-serif,*/
+);
+/*seccion Inicio*/
+body{
+    background-image: $fondo-pagina;
+}
+header{
+    grid-area: nav;
+    margin-bottom: 5%;
+    .Txtlogo{
+        font-family: map-get($estilos, fuentetitulo);
+        color: rgba(69, 171, 230, 0.829);
+    }
+}
+.principal{
+    background-color: $fondo-cuerpo;
+    margin: 0 20px;
+    padding: 0px 30px;
+    font-family: map-get($estilos, fuenteprincipal);
+    font-size: 1em;
+    grid-column: 1 / span 3;
+    @include movil{
+        margin: 0 5%;
+        grid-column: 1;
+    }
+}
+.noticias{
+    grid-area: noticias;
+}
+.noticiaUno{
+    display: flex;
+    &__img{
+        width: 50%;
+        @include movil{
+            width: 100%;
+        }
+    }
+    &__texto{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 10px;
+    }
+    @include movil{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.noticiaDos{
+    display: flex;
+    flex-direction: row-reverse;
+    &__img{
+        @extend .noticiaUno__img;
+    }
+    &__texto{
+        @extend .noticiaUno__texto;
+    }
+    @include movil{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.atajo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $fondo-cuerpo;
+    background-image: url(../Assets/LogoLPF.png);
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-position: bottom;
+    padding: 50px 20px;
+    grid-area: atajo;
+    font-family: map-get($estilos, fuenteprincipal);
+    font-size: 1em;
+    &__titulo{
+        margin: 20px 0;
+    }
+    &__img{
+        overflow: hidden;
+    }
+    &__img img{
+        transition: transform 3s;
+    }
+    &__img img:hover{
+        transform: scale(1.2);
+    }
+    &__marcador{
+        font-size: 2em;
+    }
+}
+.divisor{
+    grid-area: divisor;
+    background-image: url(../Assets/UmbroATU.jpg);
+    background-color: $fondo-cuerpo;
+    height: 150px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+.otraseccion{
+    grid-area: otra;
+    background-color: $fondo-cuerpo;
+    margin: 0 20px;
+    &__asociate{
+        background-image: url(../Assets/Asociate.jpg);
+        background-color: $fondo-cuerpo;
+        background-size: cover;
+        background-position: center;
+        background-clip: content-box;
+        background-blend-mode: luminosity;
+        font-family: map-get($estilos, fuenteprincipal);
+        font-size: 3em;
+        & a{
+            text-decoration: none;
+            color: rgb(175, 139, 32);
+            transition: transform 3s;
+        }
+        & a:hover{
+            transform: scale(1.1);
+        }    
+        @include movil{
+            margin-bottom: 5%;
+        }
+    }
+}
+.reseña{
+    font-family: map-get($estilos, fuentereseña);
+    grid-area: resumen;
+    margin-top: 5%;
+}
+footer{
+    background: rgb(57,74,255);
+    background: -moz-linear-gradient(0deg, rgba(57,74,255,0.9752275910364145) 3%, rgba(24,183,224,1) 33%, rgba(255,255,255,1) 91%);
+    background: -webkit-linear-gradient(0deg, rgba(57,74,255,0.9752275910364145) 3%, rgba(24,183,224,1) 33%, rgba(255,255,255,1) 91%);
+    background: linear-gradient(0deg, rgba(57,74,255,0.9752275910364145) 3%, rgba(24,183,224,1) 33%, rgba(255,255,255,1) 91%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#394aff",endColorstr="#ffffff",GradientType=1);
+    background-color: $fondo-cuerpo;
+    color: rgba(0, 0, 0, 0.808);
+    display: flex;
+    justify-content: space-evenly;
+    grid-area: footer;
+    font-family: map-get($estilos, fuentefooter);
+    font-size: 1em;
+    .imgf{
+        display: flex;
+        align-items: center;
+        margin: 2% 0;
+    }
+    .redes{ 
+        @extend .noticiaUno__texto;
+        & ul{
+            list-style: none;
+        }
+    }
+    .contacto{
+        display: flex;
+        align-items: center;
+    }
+    @include movil{
+        flex-direction: column;
+        align-items:center;
+    }
+}
+/*seccion de fixture*/
+.principalFix{
+    background-color: $fondo-cuerpo;
+    margin: 20px 1%;
+    padding: 30px 30px;
+    grid-area: contenido;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.partido{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    &__img{
+        width: 50%;
+        @include movil{
+            width: 100%;
+        }
+    }
+}
+.partidoAnterior{
+    display: flex;
+    & iframe{
+        @include movil{
+            width: 100%;
+        }
+    }    
+    &__txt{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px 10px;
+        justify-content: center;
+    }
+    @include movil{
+        flex-direction: column;
+        margin-top: 5%;
+    }
+}
+.fixture{
+    margin: 50px 0;
+}
+.reseña{
+    @extend .reseña;
+}
+/*seccion Plantel*/
+.principalPlantel{
+    background-color: $fondo-cuerpo;
+    margin: 20px 1%;
+    padding: 30px 30px;
+    grid-area: contenido;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.carrusel{
+        margin: 50px 0;
+    .carousel-inner{
+        width: 25%;
+        @include movil{
+            width: 50%;
+        }
+    }
+    .carousel-caption{
+        background-color: aliceblue;
+        border-left: 5px solid rgb(143, 122, 4);
+        border-bottom: 5px solid rgb(143, 122, 4);
+    }
+}
+.reseña{
+    @extend .reseña;
+}
+/*seccion del estadio*/
+.principalEst{
+    background-image: url(../Assets/EstadioFondo.jpg);
+    background-size: cover;
+    background-blend-mode: soft-light;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: cadetblue;
+    margin: 20px 1%;
+    padding: 30px 30px;
+    grid-area: contenido;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.descripcion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__img{
+        @include movil{
+            width: 400px;
+        }
+    }
+}
+.reseña{
+    @extend .reseña;
+}
+/*seccion de asociamiento*/
+.principalAsoc{
+    background-color: cadetblue;
+    margin: 0% 1%;
+    padding: 30px 30px;
+    grid-area: contenido;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    .asoc{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+}
+.reseña{
+    @extend .reseña;
+}

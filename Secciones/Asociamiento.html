@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="../assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="../assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Asociate!</title>
+    <meta name="description" content="¡Asocia tu pasion! participa activamente del club asociandote en simples pasos.">
+    <meta name="keywords" content="Atletico Tucuman, asociarme a Atletico">
+    <!--Font de google-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Volkhov&display=swap');
+    </style>
+    <!--AOS-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!--Fontawesome-->
+    <script src="https://kit.fontawesome.com/3a0acd883b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../Styles/estilos.css">
+</head>
+<body>
+    <div class="contenedorAsoc">
+        <!--Inicio de la navbar-->   
+<header class="sticky-top">
+    <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container">
+      <!--Logo-->
+      <a class="navbar-brand" href="../index.html"><img src="../Assets/favicon.png" width="50px" alt="Escudo ATU"></a>
+      <div class="Txtlogo">
+        <h1>Club <br>Atletico <br>Tucuman</h1>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./Partidos.html"">Fixture</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./Plantel.html">Plantel</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./Estadio.html">Estadio</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<!--Fin de la navbar-->
+        <main class="principalAsoc">
+            <section>
+                <div class="asoc">
+                    <h2>
+                        ¡Asociate al Deca!
+                    </h2>
+                    <br>
+                    <h3>Forma parte de la vida institucional, tomando decsisiones y aprovechando los beneficios.</h3>
+                    <br><br><br>
+                    <div id="Main">
+                      <form id="formulario" class="row">
+                        <legend>Coloque sus datos para asociarse</legend>
+                        <input id="Socio" placeholder="Nombre y Apellido">
+                        <input id="Duracion" placeholder="Duracion: 6 o 12 meses">
+                        <input id="Sector" placeholder="Sector: Platea, Laprida, Bolivia o Chile">
+                        <input type="submit" id="Enviar" class="btn btn-primary">
+                      </form>
+                      <div id="Constructor"></div>
+                    </div>
+            </section>
+        </main>
+    <!--Breve introduccion a la historia del club-->
+    <section class="text-bg-light p-3 reseña" data-aos="fade-zoom-in"
+    data-aos-easing="ease-in-back"
+    data-aos-delay="100"
+    data-aos-offset="0">
+            <h3>El C.A.Tucumán...</h3>
+                         <br>
+                         <h5>Se fundó en el año 1902, el 27 de Septiembre, en una locacion ubicada en el centro tucumano quedo registrada la fundacion de nuestro club por nuestros padres fundadores Agenor Albornoz y Jose Fierro...</h5>      
+    </section>
+            <!--Fin de la introduccion-->       
+   <footer>
+           <img class="imgf" width="40px" src="../Assets/favicon.png" alt="Escudo ATU">
+           <div class="redes">
+               <ul>
+               <li><i class="fa-brands fa-instagram fa-xl"></i>@atleticotucuman</li>
+               <li><i class="fa-brands fa-twitter fa-xl"></i>@ATOficial</li>
+               <li><i class="fa-brands fa-facebook fa-xl"></i>Atlético Tucumán</li>
+               </ul>
+           </div>   
+        <p class="contacto">Contacto: +54 9 381234567</p>            
+    </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="../app.js"></script>
+            </body>
+</html>
