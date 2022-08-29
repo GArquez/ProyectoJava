@@ -30,6 +30,22 @@ const socioPrecio = (duracion, sector) => {
     return precio
 }
 
+let obj = [{}]
+
+const Data = JSON.parse(localStorage.getItem('Padron')) != null ? JSON.parse(localStorage.getItem('Padron')) : localStorage.setItem('Padron', JSON.stringify(obj))
+console.log(Data)
+/*let SocioFromLocal = JSON.parse(localStorage.getItem('Padron'))*/
+class Socio {
+    constructor ({Ubicacion, Identificacion, Precio, Tiempo}) {
+        this.Nombre = Identificacion,
+        this.Ubicacion = Ubicacion,
+        this.Precio = Precio,
+        this.Duracion = Tiempo
+    }
+}
+
+
+
 let miFormulario = document.getElementById("formulario");
 miFormulario.addEventListener("submit", validarFormulario);
 
@@ -40,7 +56,7 @@ function validarFormulario(e){
     let duracion = (formulario.children[2].value)
     let sector = (formulario.children[3].value)
 
-    socioPrecio(duracion, sector)
+    /*socioPrecio(duracion, sector)*/
 
     const packSocio = [
         { Ubicacion: "Platea",
@@ -59,37 +75,46 @@ function validarFormulario(e){
         Identificacion : socio,
         Precio:"$" + socioPrecio(duracion,sector),
         Tiempo: duracion + " meses"} ]
+        const buscador = packSocio.find((el) => el.Ubicacion == sector)
 
 
-        let SocioMemory = localStorage.getItem('id')
+        let SocioObject = Data == [] && Data.includes((el) => el?.Nombre == socio)
 
         
-        if (SocioMemory != socio) {
-            const buscador = packSocio.find((el) => el.Ubicacion == sector)
+        if (SocioObject != true) {
             
-            while (duracion == 6 && buscador) {
+            while (duracion == 6) {
+            buscador
+
+            let NewSocio = new Socio(packSocio)
+            Data.push(NewSocio)
+            
+           /* let SocioToLocal = SocioFromLocal = "" || SocioFromLocal.includes((el) => el.Nombre == socio) ? SocioToLocal = NewSocio : alert ("El socio con nombre " + socio + " ya existe en nuestro padron.")
+            SocioFromLocal.push(SocioToLocal)*/
             let div = document.getElementById("Constructor")
             div.className = "d-flex flex-column align-items-center"
             let caja = `<h2>¡Hola! Este es tu pack de socio</h2>
                         <p>Nombre: ${buscador.Identificacion}</p>
                         <p>Ubicacion: ${buscador.Ubicacion}</p>
                         <p>Precio: ${buscador.Precio}</p>
-                        <p>Tiempo: ${buscador.Tiempo}</p>`
-            
-            localStorage.setItem('pack', socio)            
+                        <p>Tiempo: ${buscador.Tiempo}</p>`                                   
             return div.innerHTML = caja
             }    
-            while (duracion == 12 && buscador) {
-            let div = document.getElementById("Constructor")
-            div.className = "d-flex flex-column align-items-center"
-            let caja = `<h2>¡Hola! Este es tu pack de socio</h2>
-                        <p>Nombre: ${buscador.Identificacion}</p>
-                        <p>Ubicacion: ${buscador.Ubicacion}</p>
-                        <p>Precio: ${buscador.Precio}</p>
-                        <p>Tiempo: ${buscador.Tiempo}</p>`
-            
-            localStorage.setItem('id', socio)            
-            return div.innerHTML = caja
+            while (duracion == 12) {
+                buscador
+
+                let NewSocio = new Socio(packSocio)
+                Data.push(NewSocio)
+
+                /*let SocioToLocal = SocioFromLocal != "" ? SocioToLocal = SocioenJSON : alert ("El socio con nombre " + socio + " ya existe en nuestro padron.") && SocioFromLocal.push(SocioToLocal)*/
+                let div = document.getElementById("Constructor")
+                div.className = "d-flex flex-column align-items-center"
+                let caja = `<h2>¡Hola! Este es tu pack de socio</h2>
+                            <p>Nombre: ${buscador.Identificacion}</p>
+                            <p>Ubicacion: ${buscador.Ubicacion}</p>
+                            <p>Precio: ${buscador.Precio}</p>
+                            <p>Tiempo: ${buscador.Tiempo}</p>`                                   
+                return div.innerHTML = caja
             }
         } else {
         alert ("El socio con nombre " + socio + " ya existe en nuestro padron.")
