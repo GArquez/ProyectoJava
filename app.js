@@ -30,11 +30,9 @@ const socioPrecio = (duracion, sector) => {
     return precio
 }
 
-let obj = [{}]
 
-const Data = JSON.parse(localStorage.getItem('Padron')) != null ? JSON.parse(localStorage.getItem('Padron')) : localStorage.setItem('Padron', JSON.stringify(obj))
+const Data = JSON.parse(localStorage.getItem('Padron'))
 console.log(Data)
-/*let SocioFromLocal = JSON.parse(localStorage.getItem('Padron'))*/
 class Socio {
     constructor ({Ubicacion, Identificacion, Precio, Tiempo}) {
         this.Nombre = Identificacion,
@@ -56,7 +54,6 @@ function validarFormulario(e){
     let duracion = (formulario.children[2].value)
     let sector = (formulario.children[3].value)
 
-    /*socioPrecio(duracion, sector)*/
 
     const packSocio = [
         { Ubicacion: "Platea",
@@ -78,19 +75,18 @@ function validarFormulario(e){
         const buscador = packSocio.find((el) => el.Ubicacion == sector)
 
 
-        let SocioObject = Data == [] && Data.includes((el) => el?.Nombre == socio)
-
+        let SocioObject = Data?.some((el) => el.Nombre == socio) || []
         
-        if (SocioObject != true) {
+        if (SocioObject != true || SocioObject == []) {
             
-            while (duracion == 6) {
-            buscador
-
-            let NewSocio = new Socio(packSocio)
-            Data.push(NewSocio)
+            while (duracion == 6) {           
             
-           /* let SocioToLocal = SocioFromLocal = "" || SocioFromLocal.includes((el) => el.Nombre == socio) ? SocioToLocal = NewSocio : alert ("El socio con nombre " + socio + " ya existe en nuestro padron.")
-            SocioFromLocal.push(SocioToLocal)*/
+            let myNewSocio = JSON.parse(localStorage.getItem('Padron')) || []
+            let NewSocio = new Socio(buscador)
+            let NewSocioObj = myNewSocio.push(NewSocio)
+            let NewSocioJSON = JSON.stringify(NewSocioObj)
+            localStorage.setItem('Padron', NewSocioJSON)
+            
             let div = document.getElementById("Constructor")
             div.className = "d-flex flex-column align-items-center"
             let caja = `<h2>¡Hola! Este es tu pack de socio</h2>
@@ -101,12 +97,13 @@ function validarFormulario(e){
             return div.innerHTML = caja
             }    
             while (duracion == 12) {
-                buscador
 
-                let NewSocio = new Socio(packSocio)
-                Data.push(NewSocio)
+                let myNewSocio = JSON.parse(localStorage.getItem('Padron')) || []
+                let NewSocio = new Socio(buscador)
+                myNewSocio.push(NewSocio)
+                let NewSocioJSON = JSON.stringify(myNewSocio)
+                localStorage.setItem('Padron', NewSocioJSON)
 
-                /*let SocioToLocal = SocioFromLocal != "" ? SocioToLocal = SocioenJSON : alert ("El socio con nombre " + socio + " ya existe en nuestro padron.") && SocioFromLocal.push(SocioToLocal)*/
                 let div = document.getElementById("Constructor")
                 div.className = "d-flex flex-column align-items-center"
                 let caja = `<h2>¡Hola! Este es tu pack de socio</h2>
@@ -117,6 +114,6 @@ function validarFormulario(e){
                 return div.innerHTML = caja
             }
         } else {
-        alert ("El socio con nombre " + socio + " ya existe en nuestro padron.")
+        swal("Error","El socio con el nombre " + socio + " ya existe en el padron", "error")
     }
 }
