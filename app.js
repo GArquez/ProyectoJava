@@ -31,8 +31,6 @@ const socioPrecio = (duracion, sector) => {
 }
 
 
-const Data = JSON.parse(localStorage.getItem('Padron'))
-console.log(Data)
 class Socio {
     constructor ({Ubicacion, Identificacion, Precio, Tiempo}) {
         this.Nombre = Identificacion,
@@ -42,6 +40,14 @@ class Socio {
     }
 }
 
+const verificacion = async (socio) => {
+    const padronData = await fetch('/padron.json')
+    const padronJson = await padronData.json()
+
+    const SocioFind = padronJson.some((el) => el.Nombre == socio)
+
+    return SocioFind
+}
 
 
 let miFormulario = document.getElementById("formulario");
@@ -72,21 +78,25 @@ function validarFormulario(e){
         Identificacion : socio,
         Precio:"$" + socioPrecio(duracion,sector),
         Tiempo: duracion + " meses"} ]
+
         const buscador = packSocio.find((el) => el.Ubicacion == sector)
 
 
-        let SocioObject = Data?.some((el) => el.Nombre == socio) || []
+        verificacion(socio)
         
-        if (SocioObject != true || SocioObject == []) {
-            
-            while (duracion == 6) {           
-            
-            let myNewSocio = JSON.parse(localStorage.getItem('Padron')) || []
-            let NewSocio = new Socio(buscador)
-            let NewSocioObj = myNewSocio.push(NewSocio)
-            let NewSocioJSON = JSON.stringify(NewSocioObj)
-            localStorage.setItem('Padron', NewSocioJSON)
-            
+        if (verificacion != true) {
+            fetch('/padron.json', {
+                method: 'POST',
+                body: JSON.stringify({
+                    Nombre: socio,
+                    Ubicacion: sector,
+                    Precio: socioPrecio(duracion, sector),
+                    Tiempo: duracion,
+                }),
+                headers: {
+                    'Content-type': 'application/json;charset=UTF-8',
+                },
+            })      
             let div = document.getElementById("Constructor")
             div.className = "d-flex flex-column align-items-center"
             let caja = `<h2>¡Hola! Este es tu pack de socio</h2>
@@ -94,26 +104,8 @@ function validarFormulario(e){
                         <p>Ubicacion: ${buscador.Ubicacion}</p>
                         <p>Precio: ${buscador.Precio}</p>
                         <p>Tiempo: ${buscador.Tiempo}</p>`                                   
-            return div.innerHTML = caja
-            }    
-            while (duracion == 12) {
-
-                let myNewSocio = JSON.parse(localStorage.getItem('Padron')) || []
-                let NewSocio = new Socio(buscador)
-                myNewSocio.push(NewSocio)
-                let NewSocioJSON = JSON.stringify(myNewSocio)
-                localStorage.setItem('Padron', NewSocioJSON)
-
-                let div = document.getElementById("Constructor")
-                div.className = "d-flex flex-column align-items-center"
-                let caja = `<h2>¡Hola! Este es tu pack de socio</h2>
-                            <p>Nombre: ${buscador.Identificacion}</p>
-                            <p>Ubicacion: ${buscador.Ubicacion}</p>
-                            <p>Precio: ${buscador.Precio}</p>
-                            <p>Tiempo: ${buscador.Tiempo}</p>`                                   
-                return div.innerHTML = caja
-            }
-        } else {
-        swal("Error","El socio con el nombre " + socio + " ya existe en el padron", "error")
+            div.innerHTML = caja
+            } else {
+        swal("Error", "El socio con el nombre " + socio + " ya existe en el padron", "error")
     }
 }
