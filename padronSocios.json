@@ -1,0 +1,16 @@
+[
+    {
+        "Nombre": "Guillermo Arquez",
+        "Ubicacion": "Platea",
+        "Precio": "$1700",
+        "Tiempo": "12 meses",
+        "Email": "guillegarquez5@gmail.com"
+    },
+    {
+        "Nombre": "Pablo Hector",
+        "Ubicacion": "Laprida",
+        "Precio": "$800",
+        "Tiempo": "6 meses",
+        "Emai": "pabloh@gmail.com"
+    }
+]

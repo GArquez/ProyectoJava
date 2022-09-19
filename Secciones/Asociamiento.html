@@ -69,12 +69,25 @@
                     <br>
                     <h3>Forma parte de la vida institucional, tomando decsisiones y aprovechando los beneficios.</h3>
                     <br><br><br>
-                    <div id="Main">
-                      <form id="formulario" class="row">
+                    <div id="main">
+                      <form action="../padron.json" id="formulario" method="post" enctype="">
                         <legend>Coloque sus datos para asociarse</legend>
-                        <input id="Socio" placeholder="Nombre y Apellido">
-                        <input id="Duracion" placeholder="Duracion: 6 o 12 meses">
-                        <input id="Sector" placeholder="Sector: Platea, Laprida, Bolivia o Chile">
+                        <div id="socio">
+                          <label for="inputSocio" class="col-md-4">Nombre completo</label>
+                          <input type="text" id="inputSocio" placeholder="Nombre y Apellido" class="offset-md-2 col-md-6">
+                        </div>
+                        <div id="duracion">
+                          <label for="inputDuracion" class="col-md-4">Duracion de su abono</label>
+                          <input type="text" id="inputDuracion" placeholder="6 o 12 meses" class="offset-md-2 col-md-6">
+                        </div>
+                        <div id="sector">
+                          <label for="inputSector" class="col-md-4">Coloque el sector</label>
+                          <input type="text" id="inputSector" placeholder="Platea, Laprida, Bolivia o Chile" class="offset-md-2 col-md-6">
+                        </div>
+                        <div id="email">
+                          <label for="inputEmail" class="col-md-4">E-mail</label>
+                          <input type="email" id="inputEmail" placeholder="Coloque su e-mail" class="offset-md-2 col-md-6">
+                        </div>
                         <input type="submit" id="Enviar" class="btn btn-primary">
                       </form>
                       <div id="Constructor"></div>

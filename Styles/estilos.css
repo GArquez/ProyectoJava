@@ -262,3 +262,7 @@ footer {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center; }
+    .principalAsoc .asoc form {
+      height: 300px; }
+    .principalAsoc .asoc .btn {
+      align-self: center; }

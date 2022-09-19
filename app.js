@@ -1,17 +1,18 @@
 /*Simulador para asociarse, ingresa nombres, ubicacion y duracion, para devolver lo mismo con el numero de asociamiento correspondiente y el precio a pagar*/
 
-let principal = document.getElementById("Main")
-principal.className = "d-flex flex-column align-items-center justify-content-between"
+let principal = document.getElementById("main")
+principal.className = "container"
+let miFormulario = document.getElementById("formulario");
+miFormulario.className = "d-flex flex-column justify-content-evenly"
 
-let caja0 = document.getElementById("Socio")
-let caja1 = document.getElementById("Duracion")
-let caja2 = document.getElementById("Sector")
-let caja3 = document.getElementById("Enviar")
-caja0.className ="col-md-3 d-flex flex-column align-items-center"
-caja1.className ="col-md-3 d-flex flex-column align-items-center"
-caja2.className ="col-md-3 d-flex flex-column align-items-center"
-caja3.className ="col-md-2 offset-md-1 d-flex flex-column align-items-center"
-
+let caja0 = document.getElementById("socio")
+let caja1 = document.getElementById("duracion")
+let caja2 = document.getElementById("sector")
+let caja3 = document.getElementById("email")
+caja0.className = "row"
+caja1.className = "row"
+caja2.className = "row"
+caja3.className = "row"
 
 
 const socioPrecio = (duracion, sector) => {
@@ -30,82 +31,72 @@ const socioPrecio = (duracion, sector) => {
     return precio
 }
 
+const dataJson = async (socio, nuevoSocio) => {
+    const data = await fetch('/padronSocios.json')
+    const dataNombre = await data.json()
+    
+    const verificar = dataNombre.some((el) => el.Nombre == socio)
 
-class Socio {
-    constructor ({Ubicacion, Identificacion, Precio, Tiempo}) {
-        this.Nombre = Identificacion,
-        this.Ubicacion = Ubicacion,
-        this.Precio = Precio,
-        this.Duracion = Tiempo
-    }
+    if (verificar != true) {
+        let enviarJson = await fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body: JSON.stringify(nuevoSocio),
+            headers: {
+                'Content-type': 'application/json;charset=UTF-8',
+            },
+        })
+        let Json = await enviarJson.json()
+        
+                let div = document.getElementById("Constructor")
+                div.className = "d-flex flex-column align-items-center"
+                
+                let caja = `<h2>¡Hola! Este es tu pack de socio</h2>
+                            <p>Nombre: ${Json.Identificacion}</p>
+                            <p>Ubicacion: ${Json.Ubicacion}</p>
+                            <p>Precio: ${Json.Precio}</p>
+                            <p>Tiempo: ${Json.Tiempo}</p>`                                   
+                div.innerHTML = caja
+                swal("¡Listo!", "El socio " + Json.Identificacion + " se ha asociado con exito" , "success")
+    } else {
+        swal("Error", "El socio con el nombre " + socio + " ya existe en el padron", "error")
+}
 }
 
-const verificacion = async (socio) => {
-    const padronData = await fetch('/padron.json')
-    const padronJson = await padronData.json()
-
-    const SocioFind = padronJson.some((el) => el.Nombre == socio)
-
-    return SocioFind
-}
-
-
-let miFormulario = document.getElementById("formulario");
 miFormulario.addEventListener("submit", validarFormulario);
 
 function validarFormulario(e){
     e.preventDefault();
     let formulario = e.target
-    let socio = (formulario.children[1].value)
-    let duracion = (formulario.children[2].value)
-    let sector = (formulario.children[3].value)
+    let socio = (formulario.children[1].children[1].value)
+    let duracion = (formulario.children[2].children[1].value)
+    let sector = (formulario.children[3].children[1].value)
+    let email = (formulario.children[4].children[1].value)
 
 
-    const packSocio = [
+    let packSocio = [
         { Ubicacion: "Platea",
         Identificacion : socio,
         Precio:"$" + socioPrecio(duracion,sector),
-        Tiempo: duracion + " meses" }, 
+        Tiempo: duracion + " meses",
+        Email: email }, 
         { Ubicacion: "Laprida",
         Identificacion : socio,
         Precio:"$" + socioPrecio(duracion,sector),
-        Tiempo: duracion + " meses" }, 
+        Tiempo: duracion + " meses",
+        Email: email }, 
         { Ubicacion: "Bolivia",
         Identificacion : socio,
         Precio:"$" + socioPrecio(duracion,sector),
-        Tiempo: duracion + " meses"},
+        Tiempo: duracion + " meses",
+        Email: email },
         { Ubicacion: "Chile",
         Identificacion : socio,
         Precio:"$" + socioPrecio(duracion,sector),
-        Tiempo: duracion + " meses"} ]
+        Tiempo: duracion + " meses",
+        Email: email } ]
 
         const buscador = packSocio.find((el) => el.Ubicacion == sector)
-
-
-        verificacion(socio)
+  
+        dataJson(socio, buscador)
         
-        if (verificacion != true) {
-            fetch('/padron.json', {
-                method: 'POST',
-                body: JSON.stringify({
-                    Nombre: socio,
-                    Ubicacion: sector,
-                    Precio: socioPrecio(duracion, sector),
-                    Tiempo: duracion,
-                }),
-                headers: {
-                    'Content-type': 'application/json;charset=UTF-8',
-                },
-            })      
-            let div = document.getElementById("Constructor")
-            div.className = "d-flex flex-column align-items-center"
-            let caja = `<h2>¡Hola! Este es tu pack de socio</h2>
-                        <p>Nombre: ${buscador.Identificacion}</p>
-                        <p>Ubicacion: ${buscador.Ubicacion}</p>
-                        <p>Precio: ${buscador.Precio}</p>
-                        <p>Tiempo: ${buscador.Tiempo}</p>`                                   
-            div.innerHTML = caja
-            } else {
-        swal("Error", "El socio con el nombre " + socio + " ya existe en el padron", "error")
-    }
 }

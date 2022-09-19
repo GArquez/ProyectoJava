@@ -277,6 +277,12 @@ footer{
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
+        & form{
+            height: 300px;
+        }
+        & .btn{
+            align-self: center;
+        }
     }
 }
 .reseña{
